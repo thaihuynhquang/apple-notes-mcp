@@ -1,5 +1,24 @@
 ## [Unreleased]
 
+## [2.16.6] - 2026-11-12
+
+### Security
+
+- **Writes no longer reach dotfiles, auto-run directories or `~/Library`.** `save-attachment`,
+  `export-attachments`, `export-paper-image` and the Markdown/HTML exports checked only
+  the Notes data folder, so a prompt-injected client could save an attachment from a
+  shared note as `~/Library/LaunchAgents/*.plist` or `~/.zshenv`, which macOS or the
+  shell then runs. Destinations now refuse private locations:
+  dotfiles (`~/.zshenv`, `.env`), anything inside credential, configuration and
+  auto-run directories at any depth (`.ssh`, `.config`, `.git`, `.claude`, `.vscode`,
+  ...), and `~/Library` outside iCloud Drive and `~/Library/CloudStorage` are refused
+  unless the server sets `APPLE_NOTES_MCP_ALLOW_PRIVATE_SAVE_PATHS=1`.
+- **Failure logs no longer carry note titles, folder names or account names.** MCP
+  hosts persist stderr (Claude Desktop writes it under `~/Library/Logs/Claude`), so
+  title-based reads, `create-note`, `create-folder`, `delete-folder` and
+  `list-shared-notes` now log without those names and redact them from the
+  AppleScript error text.
+
 ## [2.16.5] - 2026-11-11
 
 ### Changed
