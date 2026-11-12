@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [2.16.6] - 2026-11-12
+
 ### Security
 
 - **Writes no longer reach dotfiles, auto-run directories or `~/Library`.** `save-attachment`,
