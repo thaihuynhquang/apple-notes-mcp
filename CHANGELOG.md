@@ -19,6 +19,10 @@
   `list-shared-notes` now log without those names and redact them from the
   AppleScript error text.
 
+### Changed
+
+- Dependency bump via Dependabot; committed bundle rebuilt. (automated)
+
 ## [2.16.5] - 2026-11-11
 
 ### Changed
